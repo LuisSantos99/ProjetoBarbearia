@@ -1,6 +1,6 @@
 <?php
 
-require_once("bd.php");
+require_once("../bd.php");
 
 $Nome = filter_input(INPUT_POST,'nomeCliente',FILTER_DEFAULT);
 $DataNasc = filter_input(INPUT_POST,'NascCliente',FILTER_DEFAULT);
