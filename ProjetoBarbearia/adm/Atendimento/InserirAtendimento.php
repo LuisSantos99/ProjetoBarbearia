@@ -1,5 +1,5 @@
 <?php
-require_once("bd.php");
+require_once("../bd.php");
 $xidcliente = filter_input(INPUT_POST,'idCliente',FILTER_DEFAULT); 
 if ($xidcliente == NULL)
 	header('location: PesquisaCliente.php');
