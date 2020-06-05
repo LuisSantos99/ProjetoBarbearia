@@ -1,0 +1,61 @@
+@font-face{
+    font-family: venner;
+    src:url(Veneer.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.topo{
+    display: flex;
+    background-color:#CD853F;
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-family: venner;
+}
+
+.topo img{
+    width: 120px;
+	height: 120px;
+}
+
+.rodape{
+    display: flex;
+    background-color:#CD853F;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   margin-top: 50px;
+    box-shadow: 0 0 15px black;
+    width: 100%;
+}
+
+.rodape img{
+    width: 180px;
+    height: 180px;
+}
+
+form{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 60px;
+}
+
+form input{
+    margin-bottom: 15px;
+}
