@@ -1,5 +1,5 @@
 <?php
-require_once("bd.php");
+require_once("../bd.php");
 
 $idCliente = filter_input(INPUT_POST,'IDCLIENTE',FILTER_DEFAULT);
 //$idBarbeiro = filter_input(INPUT_POST,'NascCliente',FILTER_DEFAULT);
