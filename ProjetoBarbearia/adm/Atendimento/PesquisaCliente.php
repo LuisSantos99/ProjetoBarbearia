@@ -1,6 +1,6 @@
 <?php
 
-require_once("bd.php");
+require_once("../bd.php");
 $pesquisa = filter_input(INPUT_POST, 'pesquisa', FILTER_DEFAULT);
 
 if ($pesquisa == NULL) {
