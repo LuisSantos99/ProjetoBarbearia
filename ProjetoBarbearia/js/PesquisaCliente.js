@@ -24,7 +24,7 @@ function selLinha(linha, multiplos){
 		var selecionado = selecionados[i];
 		selecionado = selecionado.getElementsByTagName("td");  
 		document.getElementById('idCliente').value   +=  selecionado[0].innerHTML ;
-  }  
+    }  
 }
 
 /**

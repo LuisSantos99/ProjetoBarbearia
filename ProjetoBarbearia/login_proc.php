@@ -2,26 +2,26 @@
 session_start();
 require_once 'adm\bd.php';
 
-$login = filter_input(INPUT_POST,'login',FILTER_DEFAULT);
-$senha = filter_input(INPUT_POST,'senha',FILTER_DEFAULT);
+$login = filter_input(INPUT_POST,'Login',FILTER_DEFAULT);
+$senha = filter_input(INPUT_POST,'Senha',FILTER_DEFAULT);
 
 $login = mysqli_real_escape_string($banco,$login);
 
 $sql = "SELECT IDUSUARIO,SENHA
         FROM usuarios
-        WHERE login = '$login'";
+        WHERE LOGIN = '$login'";
 
 $resultado = mysqli_query($banco,$sql);
 
-if($resultado->num_rows >= 1){
-    $usuario = mysqli_fetch_assoc($resultado);
-
-    if(password_verify($senha,$usuario['senha'])){
-        $_SESSION['usuario'] = $usuario['idusuario'];
-        header('location:adm');
+if($resultado->num_rows >= 1){            
+    $usuarios = mysqli_fetch_assoc($resultado);
+    
+    if(password_verify($senha,$usuarios['SENHA'])){
+        $_SESSION['usuario'] = $usuario['IDUSUARIO'];
+        header('location:paginaInicial.html');
     }else{
-        header('location: index.php?erro=1');
+        header('location:index.php?erro=1');
     }
 }else{
     header('location: index.php?erro=2');
-}    
+} 
