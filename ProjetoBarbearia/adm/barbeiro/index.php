@@ -1,7 +1,7 @@
 <?php 
     require_once '../bd.php';
     $sql = "SELECT *
-    FROM barbeiro WHERE IDBARBEIRO ; //MEXI AQUI
+    FROM barbeiro WHERE IDBARBEIRO"; //MEXI AQUI
     $resultado = mysqli_query($banco,$sql);
 
 ?>

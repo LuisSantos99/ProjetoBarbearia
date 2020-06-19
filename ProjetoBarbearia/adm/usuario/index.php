@@ -23,7 +23,6 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Login</th>
-      <th scope="col">Senha</th>
       <th scope="col">Nome do Barbeiro</th>
     </tr>
   </thead>
@@ -35,7 +34,6 @@
       <tr>
           <td><?= $usuario ['IDUSUARIO']?></td>
           <td><?= $usuario ['LOGIN']?> </td>
-          <td><?= $usuario ['SENHA']?></td>
           <td><?= $usuario ['IDBARBEIRO']?></td>
           <td> 
             <a class="btn btn-success" href ="editar.php?id=<?=$usuario['IDUSUARIO'] ?>"role="button"> Editar  </a>

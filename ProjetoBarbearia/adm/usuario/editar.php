@@ -2,11 +2,11 @@
     require_once '../bd.php';
 	$IDUSUARIO = filter_input(INPUT_GET,'id',FILTER_DEFAULT);
     $IDUSUARIO=intval($IDUSUARIO);
-    $sql = "SELECT * 
-    FROM usuarios 
-	WHERE IDUSUARIO =$IDUSUARIO"; //MEXI AQUI	
+    $sql = "SELECT *
+    FROM usuarios WHERE IDUSUARIO = $IDUSUARIO"; //MEXI AQUI	
 	$resultado = mysqli_query($banco,$sql);    
 	$usuarios = mysqli_fetch_assoc($resultado);
+	
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,6 +46,9 @@
                      </select>
  					</div>
  				</div>
+				 <div class="form-group">
+   					 <input type="hidden" name="IdUsuario" id="IDUSUARIO" value="<?=$usuarios['IDUSUARIO']?>" class="form-control"  aria-describedby="IDUSUARIO" placeholder="ID">
+ 				 </div>
 				<div class="form-row" style="float:right;">
 				    <div class="form-group"> 
 			   	    <button type="submit" class="btn btn-success">Editar</button>
