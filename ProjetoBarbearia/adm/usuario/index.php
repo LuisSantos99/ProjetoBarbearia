@@ -16,6 +16,7 @@
 <body>
 
     <h1>Listar Usuários</h1>
+    <a class="botao" href="inserir.php">Inserir Usuário</a>
     <hr>
     <table class="table table-borderless table-dark">
   <thead>
