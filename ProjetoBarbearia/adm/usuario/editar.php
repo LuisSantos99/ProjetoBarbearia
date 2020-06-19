@@ -3,7 +3,7 @@
 	$IDUSUARIO = filter_input(INPUT_GET,'IDUSUARIO',FILTER_DEFAULT);
     $IDUSUARIO=intval($IDUSUARIO);
     $sql = "SELECT IDUSUARIO,LOGIN,SENHA,IDBARBEIRO 
-    FROM usuarios WHERE IDUSUARIO = 2"; //MEXI AQUI	
+    FROM usuarios WHERE; //MEXI AQUI	
 	$resultado = mysqli_query($banco,$sql);    
 	$usuarios = mysqli_fetch_assoc($resultado);
 ?>
@@ -33,7 +33,7 @@
  					</div>
  					<div class="form-group col-md-3">
  						<label for="LabelSenha">Senha </label>
- 						<input value= "<?=$usuarios['SENHA']?>" type="text" class="form-control date-mask" id="Senha" name="Senha" placeholder="Senha">
+ 						<input value= "<?=$usuarios['SENHA']?>" type="password" class="form-control date-mask" id="Senha" name="Senha" placeholder="Senha">
  					</div>
  				</div>
  				<div class="form-row"> 					
@@ -45,9 +45,6 @@
                      </select>
  					</div>
  				</div>
-				 <div class="form-group">
-    					<input type="text" name="IdUsuario" id="IdUsuario" value="<?=$usuarios['IDUSUARIO']?>" class="form-control"  aria-describedby="ID" placeholder="IDUSUARIO">
-  				</div>
 				<div class="form-row" style="float:right;">
 				    <div class="form-group"> 
 			   	    <button type="submit" class="btn btn-success">Editar</button>
