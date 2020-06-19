@@ -1,5 +1,5 @@
 body {
-	margin: 40px 10px;
+	/* margin: 10px 0px; */
 	padding: 0;
 	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	font-size: 14px;
@@ -7,5 +7,77 @@ body {
 
 #calendar {
 	max-width: 900px;
-	margin: 0 auto;
+	margin: 1 auto;
+	height: 100%;
+}
+
+#conteudo{
+	width: 80%;
+	float: right;
+	text-align: center;
+	padding-left: 5%;
+	/* background-color: red; */
+}
+
+#menuLateral{
+	width: 20%;
+	float: left;
+	text-align: center;		
+}
+
+.topo{
+    display: flex;
+    background-color:#1E90FF;
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-between;
+	width: 100%;
+	height: 80px;
+    align-items: center;
+    font-family: venner;
+}
+
+.topo img{
+    width: 120px;
+	height: 120px;
+	margin-top: -10px;
+}
+
+.rodape{
+    display: flex;
+    background-color:#1E90FF;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    box-shadow: 0 0 15px black;
+    width: 100%;
+}
+
+.rodape img{
+    width: 180px;
+    height: 180px;
+}
+
+form{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 60px;
+}
+
+form input{
+    margin-bottom: 15px;
+}
+
+@font-face{
+    font-family: venner;
+    src:url(Veneer.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
 }
