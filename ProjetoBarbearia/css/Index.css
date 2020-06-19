@@ -7,7 +7,7 @@
 body{
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../img/Fundo2.jpeg);
+    background-image: url(../assets/Fundo2.jpeg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,12 +38,12 @@ body{
 .container-form label{
     width: 100%;
     color: white;
-    font-size: 20px;
+    font-size: 28px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-
+    margin-bottom: 30px;
 }
 
 .input-login{
