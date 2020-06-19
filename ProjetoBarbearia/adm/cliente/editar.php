@@ -1,9 +1,9 @@
 <?php 
     require_once '../bd.php';
-	$idcliente = filter_input(INPUT_GET,'idcliente',FILTER_DEFAULT);
+	$idcliente = filter_input(INPUT_GET,'id',FILTER_DEFAULT);
     $idcliente=intval($idcliente);
-    $sql = "SELECT IDCLIENTE,NOME,DATANASC,CPF,DDD,TELEFONE,RG,ATIVO 
-    FROM clientes WHERE IDCLIENTE = 13"; //MEXI AQUI	
+    $sql = "SELECT *
+    FROM clientes WHERE IDCLIENTE = $idcliente"; //MEXI AQUI	
 	$resultado = mysqli_query($banco,$sql);    
 	$clientes = mysqli_fetch_assoc($resultado);
 ?>

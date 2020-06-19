@@ -1,7 +1,7 @@
 <?php 
     require_once '../bd.php';
-    $sql = "SELECT IDCLIENTE,NOME,DATANASC,CPF,DDD,TELEFONE,RG,ATIVO 
-    FROM clientes WHERE IDCLIENTE = 13"; //MEXI AQUI	
+    $sql = "SELECT *
+    FROM clientes WHERE IDCLIENTE"; //MEXI AQUI	
     $resultado = mysqli_query($banco,$sql);
 ?>
 <!DOCTYPE html>

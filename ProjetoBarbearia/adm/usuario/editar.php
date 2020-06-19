@@ -1,9 +1,10 @@
 <?php 
     require_once '../bd.php';
-	$IDUSUARIO = filter_input(INPUT_GET,'IDUSUARIO',FILTER_DEFAULT);
+	$IDUSUARIO = filter_input(INPUT_GET,'id',FILTER_DEFAULT);
     $IDUSUARIO=intval($IDUSUARIO);
-    $sql = "SELECT IDUSUARIO,LOGIN,SENHA,IDBARBEIRO 
-    FROM usuarios WHERE; //MEXI AQUI	
+    $sql = "SELECT * 
+    FROM usuarios 
+	WHERE IDUSUARIO =$IDUSUARIO"; //MEXI AQUI	
 	$resultado = mysqli_query($banco,$sql);    
 	$usuarios = mysqli_fetch_assoc($resultado);
 ?>
@@ -33,7 +34,7 @@
  					</div>
  					<div class="form-group col-md-3">
  						<label for="LabelSenha">Senha </label>
- 						<input value= "<?=$usuarios['SENHA']?>" type="password" class="form-control date-mask" id="Senha" name="Senha" placeholder="Senha">
+ 						<input  type="password" class="form-control date-mask" id="Senha" name="Senha" placeholder="Senha">
  					</div>
  				</div>
  				<div class="form-row"> 					

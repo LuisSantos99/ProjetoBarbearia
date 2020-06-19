@@ -1,9 +1,9 @@
 <?php 
     require_once '../bd.php';
-	$IDBARBEIRO = filter_input(INPUT_GET,'IDBARBEIRO',FILTER_DEFAULT);
+	$IDBARBEIRO = filter_input(INPUT_GET,'id',FILTER_DEFAULT);
     $IDBARBEIRO=intval($IDBARBEIRO);
-    $sql = "SELECT IDBARBEIRO,NOME,CPF
-    FROM barbeiro WHERE IDBARBEIRO = 1"; //MEXI AQUI	
+    $sql = "SELECT *
+    FROM barbeiro WHERE IDBARBEIRO = $IDBARBEIRO"; //MEXI AQUI	
 	$resultado = mysqli_query($banco,$sql);    
 	$barbeiro = mysqli_fetch_assoc($resultado);
 ?>

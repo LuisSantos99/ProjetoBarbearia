@@ -1,7 +1,7 @@
 <?php 
     require_once '../bd.php';
-    $sql = "SELECT IDUSUARIO,LOGIN,SENHA,IDBARBEIRO 
-    FROM usuarios WHERE IDUSUARIO = 2"; //MEXI AQUI	
+    $sql = "SELECT *
+    FROM usuarios WHERE IDUSUARIO"; //MEXI AQUI	
     $resultado = mysqli_query($banco,$sql);
 ?>
 <!DOCTYPE html>
