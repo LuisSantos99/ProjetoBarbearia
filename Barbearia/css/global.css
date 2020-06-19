@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+@font-face{
+    font-family: venner;
+    src:url(Veneer.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    font-size: 400 14px Roboto, sans-serif;
+    background: #e9e9e9;
+    -webkit-font-smoothing: antialiased;
+}
+
+input, button, textarea{
+    font: 400 18px Roboto, sans-serif;
+}
+
+button{
+    cursor:pointer;
+}
+
+.topo{
+    display: flex;
+    background-color:#CD853F;
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-family: venner;
+    box-shadow: 0 0 15px rgba(0,0,0,0.9);
+}
+
+.topo img{
+    width: 120px;
+    height: 120px;
+    margin-top: 10px;
+    margin-left: 32px;
+}
+
+.rodape{
+    display: flex;
+    background-color:#CD853F;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    box-shadow: 0 0 15px black;
+    width: 100%;
+    min-height: 100px;
+}
+
+.rodape img{
+    width: 80px;
+    height: 80px;
+    margin: 15px 0;
+    box-shadow: 0 0 15px black inset,0 0px 5px black;
+    border-radius: 50%;
+}
