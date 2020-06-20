@@ -17,6 +17,7 @@
 <body>
 
     <h1>Listar Barbeiros</h1>
+    <a href="inserir_barbeiro.php">Inserir Barbeiro</a>
     <hr>
     <table class="table table-borderless table-dark">
   <thead>
