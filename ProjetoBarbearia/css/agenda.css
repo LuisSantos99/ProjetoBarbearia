@@ -32,7 +32,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
 	width: 100%;
-	height: 80px;
+	/*height: 80px;*/
     align-items: center;
     font-family: venner;
 }
@@ -81,3 +81,132 @@ form input{
     padding: 0;
     outline: none;
 }
+
+#legenda{
+  border-radius: 6px;  
+}
+
+.label{
+    margin-left: 3px;
+}
+
+.legenda{
+    /* a ordem dos lados é a mesma que com margens */
+    border-width: 3px; /*5px 3px 6px;  aqui, cada lado possui uma borda de largura diferente */*/
+    border-style: dotted; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
+    border-color:#CD853F; /* uma cor de borda para cada lado */
+/*    padding: 20px;*/
+}
+
+.agendar{
+    border-radius: 8px;
+    box-shadow: 0 0 5px #1E90FF;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: venner;
+    cursor: pointer;    
+    padding: 1vw;
+    transition: .7s;
+    margin-left: 10px; 
+}
+
+.agendar:hover{
+    border-radius: 8px;
+    box-shadow: 0 0 15px #CD853F;
+    color: #CD853F;    
+}
+
+.service-icon{
+    font-size: 2.5vw;        
+}
+
+.agendar-name{
+    font-size: 2vw;
+    font-family: venner;
+}
+
+
+  @import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+
+  *, *:after, *:before {
+    box-sizing: border-box;
+  }
+#myCheck{
+    visibility = false;
+}
+  /*body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Titillium Web', sans-serif;
+    line-height: 1.5;
+    color: #444;
+    font-size: 16px;
+  }*/
+
+  p{
+    padding: 0 10px;
+  }
+
+  .modal .modal-dialog { 
+    width: 60%;
+    height: 1200px; 
+} 
+  .tabs-container {
+    position: relative;
+    height: 560px;
+    max-width: 98%;
+    margin: 0 auto;
+  }
+
+  .tabs-container p{
+    margin: 0;
+    padding: 0;
+  }
+
+  .tabs-container:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    visibility: none;
+  }
+
+  input.tabs {
+    display: none;
+  }
+
+  input.tabs + label {
+    line-height: 40px;
+    padding: 0 20px;
+    float: left;
+    background: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background ease-in-out .3s;
+  }
+
+  input.tabs:checked + label {
+    color: #000;
+    background: #eee;
+  }
+
+  input.tabs + label + div {
+    width: 98%;
+    opacity: 0;
+    position: absolute;
+    background: #eee;
+    top: 40px;
+    left: 0;
+    height: 300px;
+    padding: 10px;
+    z-index: -1;
+    transition: opacity ease-in-out .3s;
+  }
+
+  input.tabs:checked + label + div {
+    opacity: 1;
+    z-index: 1000;
+  }
