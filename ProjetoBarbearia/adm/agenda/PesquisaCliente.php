@@ -2,12 +2,30 @@
 
 require_once("../bd.php");
 $pesquisa = filter_input(INPUT_POST, 'pesquisa', FILTER_DEFAULT);
+$radio = filter_input(INPUT_POST, 'radio', FILTER_DEFAULT);
+
+if ($radio == NULL)
+  $radio = 'ativo';
 
 if ($pesquisa == NULL) {
-  $sql = "SELECT * FROM CLIENTES ORDER BY NOME";
+
+  if ($radio == 'ativo')
+    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = 'on' ORDER BY NOME";
+  else  if ($radio == 'inativo')
+    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = '0' ORDER BY NOME";
+
+  else
+    $sql = "SELECT * FROM CLIENTES ORDER BY NOME";
 } else {
-  $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' ORDER BY NOME";
-}
+
+  if ($radio == 'ativo')
+    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on' ORDER BY NOME";
+  else if ($radio == 'inativo')
+    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = '0' ORDER BY NOME";
+  else
+    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%'  ORDER BY NOME";
+
+}  
 $resultado = mysqli_query($banco, $sql);
 
 /* FUNÇÃO EM PHP PARA CARREGAR NA TABELA DE ACORDO COM A PESQUISA 
@@ -30,19 +48,20 @@ $resultado = mysqli_query($banco, $sql);
   <link href="../../css/bootstrap.min.css" rel="stylesheet">
   <link href="../../css/PesquisaCliente.css" rel="stylesheet">
   <script src='../../js/Funcoes.js'></script>
+  <script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="container">
     <br>
     <form name="frmBusca" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>?a=buscar">
-      <div class="form-row">
-        <div class="form-group col-md-9">
+      <div class="form-row">        
+        <div class="form-group col-md-11">
           <input class="form-control mr-sm-2" type="search" name="pesquisa" id="pesquisa" placeholder="Pesquisar" aria-label="Pesquisar">
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-1">
           <button class="btn btn-info" id='btPesquisar'  type="submit">Pesquisar</button>
-        </div>
+        </div>      
       </div>
     </form>
     <form method='post' action='CadastroAgenda.php' enctype='multipart/form-data'>
@@ -63,7 +82,7 @@ $resultado = mysqli_query($banco, $sql);
               <td> <?= $clientes['IDCLIENTE'] ?> </td>
               <td> <?= $clientes['NOME'] ?> </td>
               <td> <?= $clientes['CPF'] ?> </td>
-              <td> <?= $clientes['DDD'] ?> <?= $clientes['TELEFONE'] ?> </td>
+              <td> <?= $clientes['TELEFONE'] ?> </td>
               </td>
             </tr>
           </tbody>
@@ -79,8 +98,10 @@ $resultado = mysqli_query($banco, $sql);
       <input type="hidden" name="idCliente" id="idCliente">
       <br>
       <div class="form-row">	    
-        <button class="btn btn-success" id="IniciarAtend" name="IniciarAtend" type="submit">Iniciar atendimento</button>
+        <button class="btn btn-success" id="IniciarAtend" name="IniciarAtend" type="submit">
+        <i class="fas fa-sign-in-alt"></i>Iniciar atendimento</button>
       </div>
+
       <script>
         window.onload = function() {
           document.addEventListener('keypress', function(evento) {
