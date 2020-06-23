@@ -94,7 +94,7 @@ form input{
     /* a ordem dos lados é a mesma que com margens */
     border-width: 3px; /*5px 3px 6px;  aqui, cada lado possui uma borda de largura diferente */*/
     border-style: dotted; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color:#CD853F; /* uma cor de borda para cada lado */
+    border-color: #CD853F; /* uma cor de borda para cada lado */
 /*    padding: 20px;*/
 }
 
@@ -133,7 +133,7 @@ form input{
     box-sizing: border-box;
   }
 #myCheck{
-    visibility = false;
+    visibility : false;
 }
   /*body{
     margin: 0;

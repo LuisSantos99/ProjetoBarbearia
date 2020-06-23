@@ -11,8 +11,7 @@ function mascaraCPF(i){
  }
  
  function mascaraRG(i){   
-    var v = i.value;
-      
+    var v = i.value;      
     i.setAttribute("maxlength", "12"); //12.345.678-9
     if (v.length == 2 || v.length == 6) i.value += ".";   
     if (v.length == 10) i.value += "-";
@@ -30,12 +29,17 @@ function mascaraCPF(i){
  
  function mascaraCel(i){
     var v = i.value;
-    if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
-       i.value = v.substring(0, v.length-1);
-       return;
-    }   
-    i.setAttribute("maxlength", "10"); //98821-7730
-    if (v.length == 5) i.value += "-";
+    // if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+    //    i.value = v.substring(0, v.length-1);
+    //    return;
+    // }   
+    // i.setAttribute("maxlength", "10"); // +55 (16) 98821-7730
+    // if (v.length == 5) i.value += "-";
+    
+    if (v.length == 1) i.value = '+55 (' + v;
+    if (v.length == 7 ) i.value = v + ') ';
+    if (v.length == 14) i.value += "-"
+    return;
  }
 
  function mascaraDDD(i){
@@ -44,6 +48,16 @@ function mascaraCPF(i){
        i.value = v.substring(0, v.length-1);
        return;
     }   
+ }
+
+ function telefone(i){
+    var v = i.value;    
+    var aux = v;
+    if (length == 1)
+        i.value = '(' + aux;
+    if (length == 3)
+        i.value = aux + ')';
+    return;
  }
  
  function BlockKeybord(){

@@ -59,3 +59,7 @@ form{
 form input{
     margin-bottom: 15px;
 }
+
+.list-group-flush{
+    box-shadow: 0 0 7px black;
+}
