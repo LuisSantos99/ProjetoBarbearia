@@ -90,14 +90,6 @@ form input{
     margin-left: 3px;
 }
 
-.legenda{
-    /* a ordem dos lados é a mesma que com margens */
-    border-width: 3px; /*5px 3px 6px;  aqui, cada lado possui uma borda de largura diferente */*/
-    border-style: dotted; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color: #CD853F; /* uma cor de borda para cada lado */
-/*    padding: 20px;*/
-}
-
 .agendar{
     border-radius: 8px;
     box-shadow: 0 0 5px #1E90FF;    
@@ -126,6 +118,35 @@ form input{
     font-family: venner;
 }
 
+.fa-refresh{
+  font-size: 2.3vw;    
+  color: #1E90FF;          
+}
+
+.atualizar{
+  /* height: 50px; */
+  border-radius: 8px;
+  box-shadow: 0 0 5px #1E90FF;    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* font-family: venner; */
+  cursor: pointer;    
+  padding: 1vw;
+  transition: .7s;
+  margin-left: 10px; 
+}
+
+.atualizar:hover{
+  border-radius: 8px;
+  box-shadow: 0 0 15px #CD853F;
+  color: #CD853F;    
+}
+
+.atualizar-name{
+  font-size: 2vw;
+  font-family: venner;
+}
 
   @import url(https://fonts.googleapis.com/css?family=Titillium+Web);
 

@@ -1,22 +1,31 @@
 <?php
 require_once("../bd.php");
+/*********** SELECT NOS DADOS DA AGENDA *************/
+$xIDAgenda  = filter_input(INPUT_POST, 'IDAGENDA', FILTER_DEFAULT);
+
+$SQL = "SELECT * FROM ATENDIMENTO AT INNER JOIN AGENDA A ON A.IDAGENDA =  AT.IDAGENDA
+		WHERE AT.IDAGENDA = $xIDAgenda";
+
+var_dump(filter_input(INPUT_POST,'IDBARBEIRO',FILTER_DEFAULT));
 
 $idCliente = filter_input(INPUT_POST,'IDCLIENTE',FILTER_DEFAULT);
-//$idBarbeiro = filter_input(INPUT_POST,'NascCliente',FILTER_DEFAULT);
+$idBarbeiro = filter_input(INPUT_POST,'IDBARBEIRO',FILTER_DEFAULT);
+
 $dtHr = date('d/m/Y') ; 
+
 $ValorTotal = filter_input(INPUT_POST,'valorTotal',FILTER_DEFAULT);
 //ValorTotal = number_format ($ValorTotal, 2, '.', '.')
 $ValorTotal = str_replace(",",".", $ValorTotal);
-//INSERE NA TABELA DE ATENDIMENTO - TABELA PAI    
-	if ($ValorTotal == NULL){
-		$sql = "INSERT INTO ATENDIMENTO (IDCLIENTE,IDBARBEIRO,DT_HR_SALVOU,VALORTOTAL) VALUES ( $idCliente,1,$dtHr,0) ";    
-	}else{ 
-		$sql = "INSERT INTO ATENDIMENTO (IDCLIENTE,IDBARBEIRO,DT_HR_SALVOU,VALORTOTAL) VALUES ( $idCliente,1,$dtHr,$ValorTotal) ";    }
-
-$rs = mysqli_prepare($banco,$sql);
+	//UPDATE NA TABELA DE ATENDIMENTO - TABELA PAI    
+	$SQL = "UPDATE ATENDIMENTO SET	IDCLIENTE = $idCliente , 
+								   	IDBARBEIRO = $idBarbeiro , 
+									DT_HR_SALVOU = $dtHr , 
+									VALORTOTAL = $ValorTotal,
+									STATUS = 'F'
+			WHERE IDAGENDA = $xIDAgenda ";	
+$rs = mysqli_prepare($banco,$SQL);
+//var_dump($SQL);
 mysqli_stmt_execute($rs);
-
-
 
 //SELECT O ID INSERIDO
 $select = "SELECT MAX(IDATENDIMENTO) AS IDATEND FROM ATENDIMENTO ";
@@ -45,4 +54,7 @@ foreach ($array_servico as &$value) {
 
 unset($array_servico);
 
-//header('location : PesquisaCliente.php');
+$SQL =  "UPDATE AGENDA SET COLOR = '#00CED1' WHERE IDAGENDA = $xIDAgenda";
+$rs = mysqli_prepare($banco,$SQL);
+mysqli_stmt_execute($rs);
+header('location: ../agenda/agenda.php');			

@@ -8,7 +8,6 @@ $objF = new Funcoes();
 $pdf = new FPDF();
 $pdf->AddPage();
 
-
 //NOME DO ARQUIVO AO SER GERADO OU GERA O NOME DO ARQUIVO LOCAL COM O LOCAL A SER SALVO
 $arquivo = "relatorioGeralDiario.pdf";
 //DEFININDO FORMATAÇÃO DO PDF
@@ -52,7 +51,6 @@ date_default_timezone_set('America/Sao_Paulo');
 			AND CAST(AG.DATAHORA AS DATE)= '$data'
 			GROUP BY A.IDBARBEIRO, B.NOME
 			ORDER BY NOME";
-
 	$resultado = mysqli_query($banco, $sql);	
 	
 	$pdf->SetFont($fonte,$estilo,13);

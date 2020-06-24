@@ -1,7 +1,7 @@
 <?php 
     require_once '../bd.php';
-    $sql = "SELECT *
-    FROM barbeiro WHERE IDBARBEIRO"; //MEXI AQUI
+    $sql = "SELECT IDBARBEIRO,NOME,ESPECIALIZACAO,CPF
+    FROM barbeiro "; //MEXI AQUI
     $resultado = mysqli_query($banco,$sql);
 
 ?>
@@ -17,7 +17,6 @@
 <body>
 
     <h1>Listar Barbeiros</h1>
-    <a href="inserir_barbeiro.php">Inserir Barbeiro</a>
     <hr>
     <table class="table table-borderless table-dark">
   <thead>
