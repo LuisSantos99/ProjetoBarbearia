@@ -59,7 +59,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <p class="mb-1">Relatório Mensal de Quantidade de Atendimentos e Lucro por Barbeiro.</p>
         <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
       </a>
-      <a href="relatorioGeralDiario.php" target="_blank" class="list-group-item list-group-item-action">
+      <a href="relatorioAnual.php" target="_blank" class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Relatório Geral Anual</h5>
           <small class="text-muted"><?php echo strftime('%Y', strtotime('today')); ?></small>

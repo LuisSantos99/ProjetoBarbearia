@@ -10,7 +10,7 @@ $pdf->AddPage();
 
 
 //NOME DO ARQUIVO AO SER GERADO OU GERA O NOME DO ARQUIVO LOCAL COM O LOCAL A SER SALVO
-$arquivo = "relatorioMensal.pdf";
+$arquivo = "relatorioAnual.pdf";
 //DEFININDO FORMATAÇÃO DO PDF
 
 $fonte = "Arial";
@@ -38,16 +38,17 @@ date_default_timezone_set('America/Sao_Paulo');
 	// $pdf->SetFont($fonte,$estilo,15);
 	// $pdf->Cell(80,10,'Mustache BarberShop',0,1,$alinhaC);
 	$pdf->SetFont('Courier',$estilo,15);
-	$pdf->Cell(0,10,$objF->trataCarater('Relatório Mensal ',1).date('m/Y'),0,1,$alinhaR);	
-	$data = date('m');        
+	$pdf->Cell(0,10,$objF->trataCarater('Relatório Anual ',1).date('Y'),0,1,$alinhaR);	
+	$data = date('Y');        
     include_once("../bd.php");
-
+//TABELA TEMP COM MESES, VINCULO COM A TABELA DE AGENDA
+//AGRUPAR POR MES, BARBEIRO, DATA
 	$sql = "SELECT A.IDBARBEIRO, B.NOME
 			FROM ATENDIMENTO A
 			INNER JOIN BARBEIRO B ON B.IDBARBEIRO = A.IDBARBEIRO
 			INNER JOIN AGENDA AG ON AG.IDAGENDA = A.IDAGENDA
 			WHERE A.STATUS = 'F'
-			AND MONTH(AG.DATAHORA) = '$data'
+			AND YEAR(AG.DATAHORA) = '$data'
 			GROUP BY A.IDBARBEIRO, B.NOME
 			ORDER BY NOME";
 
@@ -66,7 +67,7 @@ date_default_timezone_set('America/Sao_Paulo');
         FROM ATENDIMENTO A 
         INNER JOIN BARBEIRO B ON B.IDBARBEIRO = A.IDBARBEIRO 
         INNER JOIN AGENDA AG ON AG.IDAGENDA = A.IDAGENDA 
-        WHERE MONTH(DATAHORA) = '$data' 
+        WHERE YEAR(DATAHORA) = '$data' 
         AND AG.IDBARBEIRO = $idBarbeiro
         AND STATUS = 'F'
         GROUP BY A.IDBARBEIRO, DATAHORA";
