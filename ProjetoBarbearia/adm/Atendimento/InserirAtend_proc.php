@@ -2,15 +2,24 @@
 require_once("../bd.php");
 /*********** SELECT NOS DADOS DA AGENDA *************/
 $xIDAgenda  = filter_input(INPUT_POST, 'IDAGENDA', FILTER_DEFAULT);
+<<<<<<< HEAD
 
 $SQL = "SELECT * FROM ATENDIMENTO AT INNER JOIN AGENDA A ON A.IDAGENDA =  AT.IDAGENDA
 		WHERE AT.IDAGENDA = $xIDAgenda";
 
 var_dump(filter_input(INPUT_POST,'IDBARBEIRO',FILTER_DEFAULT));
+=======
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 
+$SQL = "SELECT * FROM ATENDIMENTO AT INNER JOIN AGENDA A ON A.IDAGENDA =  AT.IDAGENDA
+		WHERE AT.IDAGENDA = $xIDAgenda";
+		
 $idCliente = filter_input(INPUT_POST,'IDCLIENTE',FILTER_DEFAULT);
 $idBarbeiro = filter_input(INPUT_POST,'IDBARBEIRO',FILTER_DEFAULT);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 $dtHr = date('d/m/Y') ; 
 
 $ValorTotal = filter_input(INPUT_POST,'valorTotal',FILTER_DEFAULT);
@@ -57,4 +66,9 @@ unset($array_servico);
 $SQL =  "UPDATE AGENDA SET COLOR = '#00CED1' WHERE IDAGENDA = $xIDAgenda";
 $rs = mysqli_prepare($banco,$SQL);
 mysqli_stmt_execute($rs);
+<<<<<<< HEAD
 header('location: ../agenda/agenda.php');			
+=======
+exit(1);
+header('location: ../agenda/agendaEditRicardo.php');			
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035

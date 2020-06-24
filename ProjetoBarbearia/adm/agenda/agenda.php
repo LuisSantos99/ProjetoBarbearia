@@ -70,6 +70,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				eventLimit: true, // permitir link "mais" quando houver muitos eventos
 				selectable: true,
 				events: [
+<<<<<<< HEAD
 					<?php
 					while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
 					?> {
@@ -82,12 +83,27 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 						},
 					<?php
 					}
+=======
+					<?php
+						while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
+							?> {
+								id: '<?php echo $row_agenda['IDAGENDA']; ?>',
+								title: '<?php echo $row_agenda['NOME']; ?>',
+								start: '<?php echo $row_agenda['DATAHORA']; ?>',
+								end: '<?php echo $row_agenda['DATAHORAFIM']; ?>',
+								color: '<?php echo $row_agenda['COR']; ?>',
+								groupId: '<?php echo $row_agenda['STATUS']; ?>',
+							},
+							<?php
+						}
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 					?>
 				],
 				eventClick: function(info) {
 					if (info.groupId == 'A') {
 						document.getElementById("myCheck").click();
 						let info_id = info.id;
+<<<<<<< HEAD
 						$.ajax({
 							url: `pesquisaAgenda.php?id=${info_id}`,
 							type: 'get'
@@ -114,6 +130,38 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 						})
 					}
 				},
+=======
+						//document.getElementById("IDAGENDA").value = info.id;
+						//AQUI EU PASSO O ID, TAVA FAZENDO O SELECT EM PHP AQUI TAMBÉM
+                        //console.log(info.id);
+
+                        $.ajax({
+                            url: `pesquisaAgenda.php?id=${info_id}`,
+                            type: 'get'
+                        }).done((data) => {
+
+                            if(data) {
+                                let agenda = JSON.parse(data);
+
+                                $('#nomeCliente').val(agenda.cliente.NOME)
+                                $('#Barbeiro').val(agenda.barbeiro.NOME)
+                                //$('#TipoCorte').val(agenda.barbeiro.ESPECIALIZACAO)
+                            }
+                        }).fail((err) => {
+                            console.log(data);
+                        })
+
+					}	
+				},				
+				// eventRender: function (event, element) {
+				// 	var originalClass = element[0].className;
+				// 	element[0].className = originalClass + ' hasmenu';
+				// },
+				// dayRender: function (day, cell) {
+				// 	var originalClass = cell[0].className;
+				// 	cell[0].className = originalClass + ' hasmenu';
+				// }
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 			})
 			$(document).contextmenu({
 				delegate: ".hasmenu",
@@ -153,6 +201,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">		
 		<button type="hidden" id="myCheck" class="btn btn-primary text-hide" data-toggle="modal" data-target=".bd-example-modal-lg">Modal grande</button>
 		<a href="../../paginaInicial.html">
@@ -172,6 +221,15 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				<i class="fas fa-calendar-alt service-icon">
 					<label class="agendar-name"> Agendar </label>
 				</i>
+=======
+	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">
+		<!-- <input type="button" value="Voltar" onClick="history.go(-1)"> 
+			<input type="button" value="Avançar" onCLick="history.forward()"> -->
+			<input type="button" value="Atualizar" onClick="history.go(0)"> 
+			<button type="hidden" id="myCheck"class="btn btn-primary text-hide" data-toggle="modal" data-target=".bd-example-modal-lg" >Modal grande</button>
+			<a href="../../paginaInicial.html">
+				<label> Página Inicial </label>
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 			</a>
 		</div>
 		<!-- MENU LATERAL -->
@@ -195,6 +253,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				<label for="label" class="label"> Atrasado </label>
 			</div>
 		</div>
+<<<<<<< HEAD
 
 	</div>
 	<div id="conteudo" style="width: 80%; float: right; ">
@@ -233,6 +292,63 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 										<div class="form-group col-md-row">
 											<label for="labelstInicial"> Data e Hora Inicial do Atendimento </label><br>
 											<input type="datetime-local" class="form-control" id="dtInicial" name="dtInicial" required="">
+=======
+		<div class="modal fade bd-example-modal-lg" id ="ModalLongoExemplo"tabindex="-1" role="dialog" aria-labelledby="ModalLongoExemplo" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">    
+					<!-- Cabeçalho do modal -->
+					<div class="modal-header">
+						<!-- <h4 class="modal-title">Título do modal</h4> -->
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<!-- Corpo do modal -->
+					<div class="modal-body">
+						<div class="tabs-container">
+							<input type="radio" name="tabs" class="tabs" id="tab1" checked>
+							<label for="tab1"> Editar Agenda </label>
+							<div>
+								<p>In hac habitasse platea dictumst. In laoreet justo quis magna porta, a tristique ligula maximus. Sed dignissim, tellus eu lobortis aliquet, lacus felis semper ipsum, eu vulputate sapien velit in augue. Fusce pharetra elit ut tristique congue. Praesent arcu diam, convallis a purus vitae, tempor volutpat est. Sed quis nulla odio. Cras turpis lectus, convallis non nibh at, venenatis efficitur risus. Praesent sed pharetra quam. Morbi sagittis ex eget dolor faucibus, vel vulputate velit molestie. Etiam laoreet malesuada consectetur. Ut quis iaculis diam, ullamcorper malesuada metus. Mauris euismod purus et odio egestas aliquam. Fusce mattis est sit amet leo luctus hendrerit. Pellentesque eleifend laoreet magna, ac fermentum felis condimentum et. Sed sem nisl, aliquet at sem at, ornare vehicula urna. </p>
+							</div>
+							<input type="radio" name="tabs" class="tabs" id="tab2">
+							<label for="tab2"> Finalizar Atendimento </label>
+							<div>
+								<p>
+									<form method='post' action='InserirAtend_proc.php' method="post" enctype='multipart/form-data'>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="LabelCliente"> Cliente </label>
+												<input type="text" class="form-control" value="" id="nomeCliente" name="nomeCliente" placeholder="Nome Cliente" disabled>
+											</div>
+											<div class="form-group col-md-6">
+												<label for="LabelCliente"> Barbeiro </label>
+												<input type="text" class="form-control" value="" id="Barbeiro" name="Barbeiro" placeholder="Barbeiro" disabled>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="TipoCorte">Serviço <strong style="color:red;"> * </strong> </label>
+												<select id="TipoCorte" name="TipoCorte" class="form-control">
+													<option value="Selecione" selected>Escolher...</option>
+													<option value="Corte Infantil">Corte Infantil</option>
+													<option value="Corte Adulto">Corte Adulto</option>
+												</select>
+											</div>
+											<div class="form-group col-md-6">
+												<label for="LabelCliente"> Valor (R$) <strong style="color:red;"> * </strong> </label>
+												<input type="text" class="form-control" id="valor" name="valor" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" />
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6" style="float:right;">
+												<input type="text" id="valorTotal" name="valorTotal" class="form-control" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" readonly="true" />
+											</div>
+
+											<div class="form-group col-md-6" id="btAdicionar" style="float:right;">
+												<div class="service">       
+													<i class="fas fa-plus service-icon" id="btAdicionar"></i>                 
+												</div>                      
+											</div>
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 										</div>
 										<div class="form-group col-md-row">
 											<label for="labeldtFinal"> Data e Hora Final do Atendimento </label><br>
@@ -246,6 +362,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 												<button type="submit" class="btn btn-success" id="btEditar">Editar Agenda</button>
 											</div>
 										</div>
+<<<<<<< HEAD
 									</div>
 								</div>
 							</form>
@@ -314,6 +431,11 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 									</div>
 								</div>
 							</form>
+=======
+									</form>
+								</p>
+							</div>
+>>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 						</div>
 					</div>
 				</div>
