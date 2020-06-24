@@ -12,9 +12,9 @@
     $resultadocliente = mysqli_query($banco, $sqlcliente);
     $agenda["cliente"] = mysqli_fetch_assoc($resultadocliente);
 
-    //$sqlcliente = "SELECT * FROM BARBEIRO WHERE IDBARBEIRO = ".$agenda['IDBARBEIRO'];
-    //$resultadobarbeiro = mysqli_query($banco, $sqlcliente);
-    //$agenda["barbeiro"] = mysqli_fetch_assoc($resultadobarbeiro);
+    $sqlcliente = "SELECT * FROM BARBEIRO WHERE IDBARBEIRO = ".$agenda['IDBARBEIRO'];
+    $resultadobarbeiro = mysqli_query($banco, $sqlcliente);
+    $agenda["barbeiro"] = mysqli_fetch_assoc($resultadobarbeiro);
 
     echo json_encode($agenda);
 
