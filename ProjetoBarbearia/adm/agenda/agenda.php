@@ -9,7 +9,6 @@ LEFT JOIN CLIENTES C ON C.IDCLIENTE = A.IDCLIENTE
 INNER JOIN ATENDIMENTO ATN ON ATN.IDAGENDA = A.IDAGENDA";
 $resultado_agenda = mysqli_query($banco, $sql);
 
-//pesquisa('<script> document.write(variavel)</script>');
 
 $xIDAgenda =  (filter_input(INPUT_GET, 'IDAGENDA', FILTER_DEFAULT));
 /************* DADOS DA AGENDA *************/
@@ -22,13 +21,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 	WHERE A.IDAGENDA = $xIDAgenda";
 	$resultado = mysqli_query($banco, $SQL);
 	$agenda = mysqli_fetch_assoc($resultado);
-	$xidcliente = $agenda['IDCLIENTE'];
-	/************* SELECT NO ID CLIENTE, NOME *******************/
-	//$xidcliente = filter_input(INPUT_POST, 'idCliente', FILTER_DEFAULT);
-	//$sql = "SELECT IDCLIENTE, NOME FROM CLIENTES WHERE IDCLIENTE = $xidcliente";
-	//$resultado = mysqli_query($banco, $sql);
-	//$cliente = mysqli_fetch_assoc($resultado);
-	//$_GET['IDAGENDA'] = 0;
+	$xidcliente = $agenda['IDCLIENTE'];	
 }
 ?>
 <!DOCTYPE html>
@@ -99,8 +92,8 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 								$('#idClienteA').val(agenda.cliente.IDCLIENTE)
 								$('#BarbeiroA').val(agenda.barbeiro.NOME)
 								$('#idBarbeiroA').val(agenda.barbeiro.IDBARBEIRO)
-								$('#dtInicial').val(agenda.barbeiro.DATAHORA)
-								$('#dtFinal').val(agenda.barbeiro.DATAHORAFIM)
+								$('#dtInicial').val(agenda.DATAHORA)
+								$('#dtFinal').val(agenda.DATAHORAFIM)
 								$('#idAgendaA').val(agenda.IDAGENDA)
 								//ATENDIMENTO								
 								$('#nomeClienteAT').val(agenda.cliente.NOME)
