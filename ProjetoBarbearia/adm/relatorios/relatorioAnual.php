@@ -38,7 +38,6 @@ function convert_date($before)
 $meses = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
 // $mesesExtenso = array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 
 //                     'Novembro', 'Dezembro');
-
 date_default_timezone_set('America/Sao_Paulo');
 
 //SetY(tamanho) : FUNÇÃO QUE DÁ ESPAÇAMENTO NO EIXO X
@@ -63,7 +62,7 @@ $sql = "SELECT A.IDBARBEIRO, B.NOME
 
 $resultado = mysqli_query($banco, $sql);
 
-foreach ($meses as &$value) {
+foreach ($meses as $value) {
 
     $sql = "SELECT A.IDBARBEIRO, B.NOME
 			FROM ATENDIMENTO A
@@ -76,7 +75,7 @@ foreach ($meses as &$value) {
             ORDER BY NOME";
 
     $pdf->SetFont($fonte, '', 12);
-    $pdf->Cell(190, 7, strftime('%B', strtotime($value)) , $border, 1, $alinhaL);
+    $pdf->Cell(190, 7, strftime('%B', strtotime("2020-".$value."-01")) , $border, 1, $alinhaL);
     
     $resultado = mysqli_query($banco, $sql);
     while ($dados = mysqli_fetch_assoc($resultado)) :
