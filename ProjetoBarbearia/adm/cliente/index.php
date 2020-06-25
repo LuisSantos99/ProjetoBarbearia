@@ -53,7 +53,7 @@ $_POST['radio'] = $radio;
   <header class="topo">
     <img src="../../img/logo.png" alt="Logo do site">
     <h1>Clientes<h1>
-        <a class="botao" href="logout.php">Sair (X)</a>
+        <a class="botao" href="../../logout.php">Sair (X)</a>
   </header>
 
   <div class="container">

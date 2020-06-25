@@ -3,24 +3,20 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Barber Style</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar Clientes</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<meta name="description" content="Verificar.com">
-	<meta name="author" content="BarbeariaMustache!">
-	<link href="../../css/bootstrap.css" rel="stylesheet">
-	<script src='../../js/Funcoes.js'></script>
-	<link href="../../css/cliente.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/global.css">
+	<link rel="stylesheet" href="../../css/paginaInicial.css">
+	<script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 	<header class="topo">
 		<img src="../../img/logo.png" alt="Logo do site">
-		<h1>Cadastro de Clientes</h1>
+		<h1>Cadastrar Cliente<h1>
+				<a class="botao" href="../../logout.php">Sair (X)</a>
 	</header>
-</body>
-
-<body>
-	<div class="container bg-light">
+	<div class="container ">
 		<div class='form-container'>
 			<div class="form-row" style="margin-top:10px;">
 				<div class="form-group col-md-11">
@@ -71,7 +67,7 @@
 				</div>
 				<div class="form-row" style="float:right;">
 					<div class="form-group">
-						<button type="reset" class="btn btn-danger">Cancelar</button>
+						<button onclick="history.go(-1)" type="reset" class="btn btn-danger">Cancelar</button>
 
 					</div>
 					<div class="form-group" style="margin-left:5px;">
@@ -83,9 +79,6 @@
 		</div>
 	</div>
 
-	<footer class="rodape">
-		<img src="../../img/logo.png" alt="Logo do site">
-	</footer>
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>

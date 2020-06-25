@@ -10,22 +10,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Barbeiro</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/adm.css">
-	<script src='../../js/Funcoes.js'></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Barbeiros</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/paginaInicial.css">
+  <script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
- <body >
- 	<nav class="navbar navbar-dark" style="background-color:white;">
- 		<img class="mr-3" src="../../img/LogoOficial.png" height='220px' width="220px" alt="Imagem de exemplo genérica">
- 	<hr>
-     <h1>Editar Barbeiro </h1>
-    <hr>
-	</nav>
- 	<div class="container bg-light">
- 		<div class='form-container'>
+
+
+<body>
+  <header class="topo">
+    <img src="../../img/logo.png" alt="Logo do site">
+    <h1>Editar Barbeiros<h1>
+        <a class="botao" href="../../logout.php">Sair (X)</a>
+  </header>
+  <div class="container">
+    <div class="form-row" style="margin-top:10px;">
+      <div class="form-group col-md-11">
+        <a href="../../paginaInicial.html">
+          <label> Página Inicial </label>
+        </a>
+        <label>|</label>
+        <label>Editar</label>
+      </div>
+    </div>
  			<form method='post' action='editar_proc.php' method="post" enctype='multipart/form-data'> 				
  				<div class="form-row"> 					
  					<div class="form-group col-md-9">
@@ -38,14 +48,14 @@
  					</div>
  				</div>
 				 <div class="form-group">
-    					<input type="text" name="IDBARBEIRO" id="IDBARBEIRO" value="<?=$barbeiro['IDBARBEIRO']?>" class="form-control"  aria-describedby="ID" placeholder="IDBARBEIRO">
+    					<input type="hidden" name="IDBARBEIRO" id="IDBARBEIRO" value="<?=$barbeiro['IDBARBEIRO']?>" class="form-control"  aria-describedby="ID" placeholder="IDBARBEIRO">
   				</div>
 				<div class="form-row" style="float:right;">
 				    <div class="form-group"> 
 			   	    <button type="submit" class="btn btn-success">Editar</button>
 					</div>
 					<div class="form-group" style="margin-left:5px;">
-					<button type="reset" class="btn btn-danger">Cancelar</button>
+					<button onclick="history.go(-1)" type="reset" class="btn btn-danger">Cancelar</button>
 					</div>
 					<br>
 				</div>

@@ -22,6 +22,9 @@ if ($idBarbeiro == "Selecione") { //Valida o campo do servidor, pois se for seta
     if (!empty($idCliente)) {
         $sql =  "UPDATE AGENDA SET IDBARBEIRO=?, DATAHORA=?,DATAHORAFIM=?
         WHERE IDAGENDA = ?";
+        
+        $rs = mysqli_prepare($banco,$sql);
+
         mysqli_stmt_bind_param($rs, 'iiii', $idBarbeiro, $dtInicial, $dtFinal,$idAgenda);
     } //else {
     //     $sql =  "UPDATE AGENDA SET IDBARBEIRO=?,DATAHORA=?,DATAHORAFIM=?
@@ -29,8 +32,6 @@ if ($idBarbeiro == "Selecione") { //Valida o campo do servidor, pois se for seta
     //     mysqli_stmt_bind_param($rs, 'iii', $idBarbeiro, $dtInicial, $dtFinal);
     // }
 
-    $rs = mysqli_prepare($banco, $sql);
     mysqli_stmt_execute($rs);
-    exit(1);
     header('location: ../../adm/agenda/agenda.php');
 }

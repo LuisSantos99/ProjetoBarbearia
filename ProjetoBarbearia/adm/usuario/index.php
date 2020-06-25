@@ -22,7 +22,7 @@ $resultado = mysqli_query($banco, $sql);
   <header class="topo">
     <img src="../../img/logo.png" alt="Logo do site">
     <h1>Usuários<h1>
-        <a class="botao" href="logout.php">Sair (X)</a>
+        <a class="botao" href="../../logout.php">Sair (X)</a>
   </header>
   <div class="container">
     <div class="form-row" style="margin-top:10px;">
@@ -42,12 +42,13 @@ $resultado = mysqli_query($banco, $sql);
       </div>
     </div>
 
-    <table class="table table-borderless table-dark">
-      <thead>
+    <table class="table table-bordered" style="background-color: white;">
+      <thead class="thead-dark">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Login</th>
           <th scope="col">Nome do Barbeiro</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
