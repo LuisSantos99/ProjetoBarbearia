@@ -4,9 +4,10 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo "<script src='../../js/Funcoes.js'></script>";
 
 $idCliente = filter_input(INPUT_POST, 'IDCLIENTE', FILTER_DEFAULT);
-$idBarbeiro = filter_input(INPUT_POST, 'Barbeiro', FILTER_DEFAULT);
+$idBarbeiro = filter_input(INPUT_POST, 'IDBARBEIRO', FILTER_DEFAULT);
 $dtInicial =  filter_input(INPUT_POST, 'dtInicial', FILTER_DEFAULT);
 $dtFinal =  filter_input(INPUT_POST, 'dtFinal', FILTER_DEFAULT);
+$idAgenda  = filter_input(INPUT_POST, 'IDAGENDA', FILTER_DEFAULT);
 $dataGerou =  date('d/m/Y');
 
 $dtInicial = str_replace('T', ' ', $dtInicial);
@@ -20,18 +21,12 @@ if ($idBarbeiro == "Selecione") { //Valida o campo do servidor, pois se for seta
     //$dtInicial =  $dtInicial + ':00';
     //IDCLIENTE,IDBARBEIRO,DATAHORA,DATAHORAFIM,COLOR) VALUES ($idCliente,$idBarbeiro,$dtInicial,$dtFinal,''
     if (!empty($idCliente)) {
-        $sql =  "UPDATE AGENDA SET IDBARBEIRO=?, DATAHORA=?,DATAHORAFIM=?
-        WHERE IDAGENDA = ?";
-        
-        $rs = mysqli_prepare($banco,$sql);
-
-        mysqli_stmt_bind_param($rs, 'iiii', $idBarbeiro, $dtInicial, $dtFinal,$idAgenda);
-    } //else {
-    //     $sql =  "UPDATE AGENDA SET IDBARBEIRO=?,DATAHORA=?,DATAHORAFIM=?
-    //     WHERE IDBARBEIRO=?";
-    //     mysqli_stmt_bind_param($rs, 'iii', $idBarbeiro, $dtInicial, $dtFinal);
-    // }
-
+        $sql =  "UPDATE AGENDA SET IDBARBEIRO= $idBarbeiro, DATAHORA= '$dtInicial', DATAHORAFIM='$dtFinal'
+        WHERE IDAGENDA = $idAgenda";  
+        $rs = mysqli_prepare($banco, $sql);
+        // mysqli_stmt_bind_param($rs, 'iiii', $, $dtInicial, $dtFinal, $idAgenda);
+    }
     mysqli_stmt_execute($rs);
+    
     header('location: ../../adm/agenda/agenda.php');
 }
