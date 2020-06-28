@@ -39,6 +39,8 @@ date_default_timezone_set('America/Sao_Paulo');
 	// $pdf->Cell(80,10,'Mustache BarberShop',0,1,$alinhaC);
 	$pdf->SetFont('Courier',$estilo,15);
 	$pdf->Cell(0,10,$objF->trataCarater('Relatório Mensal ',1).date('m/Y'),0,1,$alinhaR);	
+    $pdf->SetFont('Courier',$estilo,12);
+    $pdf->Cell(0,10,$objF->trataCarater('Emitido em ' .date('d/m/Y'),1),0,1,$alinhaR);    
 	$data = date('m');        
     include_once("../bd.php");
 
@@ -50,7 +52,7 @@ date_default_timezone_set('America/Sao_Paulo');
 			AND MONTH(AG.DATAHORA) = '$data'
 			GROUP BY A.IDBARBEIRO, B.NOME
 			ORDER BY NOME";
-
+    $totalMensal = 0;
 	$resultado = mysqli_query($banco, $sql);	
 	
     while ($dados = mysqli_fetch_assoc($resultado)) :
@@ -61,15 +63,15 @@ date_default_timezone_set('America/Sao_Paulo');
         
         $idBarbeiro = $dados['IDBARBEIRO'];
 
-        $SELECT = "SELECT A.IDBARBEIRO, DATE_FORMAT(AG.DATAHORA,'%d/%m/%Y') AS DATA , 
-        COUNT(AG.IDBARBEIRO)AS QTDEATEND, SUM(A.VALORTOTAL) AS VALORDIARIO
+        $SELECT = "SELECT COUNT(A.IDBARBEIRO)AS QTDEATEND, A.IDBARBEIRO, DATE_FORMAT(AG.DATAHORA,'%d/%m/%Y') AS DATA , 
+         SUM(A.VALORTOTAL) AS VALORDIARIO
         FROM ATENDIMENTO A 
         INNER JOIN BARBEIRO B ON B.IDBARBEIRO = A.IDBARBEIRO 
         INNER JOIN AGENDA AG ON AG.IDAGENDA = A.IDAGENDA 
         WHERE MONTH(DATAHORA) = '$data' 
         AND AG.IDBARBEIRO = $idBarbeiro
         AND STATUS = 'F'
-        GROUP BY A.IDBARBEIRO, DATAHORA";
+        GROUP BY DATE_FORMAT(AG.DATAHORA,'%d/%m/%Y')";
 
         $valorTotal = 0;
 
@@ -78,7 +80,7 @@ date_default_timezone_set('America/Sao_Paulo');
         $pdf->SetFont($fonte,$estilo,13);
         $pdf->Cell(80,7,'Qtde Atendimento',$border,0,$alinhaC);
         $pdf->SetFont($fonte,$estilo,13);
-        $pdf->Cell(30,7,'Lucro',$border,1,$alinhaC);	
+        $pdf->Cell(30,7,'Receita',$border,1,$alinhaC);	
         
         $RESUL = mysqli_query($banco, $SELECT);	
         while ($dadosSec = mysqli_fetch_assoc($RESUL)) :
@@ -93,15 +95,19 @@ date_default_timezone_set('America/Sao_Paulo');
         endwhile;
 
         $pdf->SetFont($fonte,$estilo,13);
-        $pdf->Cell(160,7,'Lucro Total ',$border,0,$alinhaR);
+        $pdf->Cell(160,7,'Receita Total ',$border,0,$alinhaR);
 
         $pdf->SetFont($fonte,$estilo,13);
         $pdf->Cell(30,7,'R$ '.$valorTotal,$border,1,$alinhaC);
 
         $pdf->SetFont($fonte,$estilo,13);
         $pdf->Cell(0,7,'',0,1,$alinhaC);
-        
+        $totalMensal = $totalMensal + $valorTotal;
 	endwhile;
+    $pdf->SetFont($fonte,$estilo,13);
+    $pdf->Cell(160,7,'Receita Mensal ',$border,0,$alinhaR);
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(30, 7, 'R$ '.$totalMensal, $border, 1, $alinhaC);    
 //FECHANDO O ARQUIVO
 $pdf->Output($arquivo,$tipo_pdf);
 ?>

@@ -48,6 +48,8 @@ $pdf->Image('../../img/' . $objImg, 70, 15, 0, 50, 'PNG');
 
 $pdf->SetFont('Courier', $estilo, 15);
 $pdf->Cell(0, 10, $objF->trataCarater('Relatório Anual ', 1) . date('Y'), 0, 1, $alinhaR);
+$pdf->SetFont('Courier',$estilo,12);
+$pdf->Cell(0,10,$objF->trataCarater('Emitido em ' .date('d/m/Y'),1),0,1,$alinhaR); 
 $data = date('Y');
 include_once("../bd.php");
 
@@ -61,7 +63,7 @@ $sql = "SELECT A.IDBARBEIRO, B.NOME
 			ORDER BY NOME";
 
 $resultado = mysqli_query($banco, $sql);
-
+$totalAnual = 0;
 foreach ($meses as $value) {
 
     $sql = "SELECT A.IDBARBEIRO, B.NOME
@@ -74,11 +76,14 @@ foreach ($meses as $value) {
 			GROUP BY A.IDBARBEIRO, B.NOME
             ORDER BY NOME";
 
-    $pdf->SetFont($fonte, '', 12);
-    $pdf->Cell(190, 7, strftime('%B', strtotime("2020-".$value."-01")) , $border, 1, $alinhaL);
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(190, 7, strftime('%B', strtotime("2020-".$value."-01")) , $border, 1, $alinhaC);
+
     
+    $valorTotalmes = 0;
     $resultado = mysqli_query($banco, $sql);
     while ($dados = mysqli_fetch_assoc($resultado)) :
+    
         $pdf->SetFont($fonte, $estilo, 13);
         $pdf->Cell(80, 7, 'Barbeiro: ', $border, 0, $alinhaL);
         $pdf->SetFont($fonte, '', 12);
@@ -106,22 +111,29 @@ foreach ($meses as $value) {
             $pdf->Cell(80, 5, $dadosSec['QTDEATEND'], $border, 0, $alinhaC);
             $pdf->SetFont($fonte, '', 12);
             $pdf->Cell(30, 5, 'R$ ' . $dadosSec['VALORDIARIO'], $border, 1, $alinhaC);
-
-            $valorTotal = $valorTotal + $dadosSec['VALORDIARIO'];
+            $valorTotal = $valorTotal + $dadosSec['VALORDIARIO'];            
         endwhile;
 
-        $pdf->SetFont($fonte, $estilo, 13);
+        $pdf->SetFont($fonte, '', 13);
         $pdf->Cell(160, 7, 'Receita Total ', $border, 0, $alinhaR);
         $pdf->SetFont($fonte, $estilo, 13);
         $pdf->Cell(30, 7, 'R$ ' . $valorTotal, $border, 1, $alinhaC);
-
-        $pdf->SetFont($fonte, $estilo, 13);
-        $pdf->Cell(0, 7, '', 0, 1, $alinhaC);
-    endwhile;
-    $value = $value + 1;
+        $valorTotalmes = $valorTotalmes + $valorTotal;
+        
+    endwhile;    
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(160, 7, 'Receita Total de ' .strftime('%B', strtotime("2020-".$value."-01")), $border, 0, $alinhaR);
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(30, 7, 'R$ ' . $valorTotalmes, $border, 1, $alinhaC);    
     $pdf->SetFont($fonte, $estilo, 13);
     $pdf->Cell(0, 7, '', 0, 1, $alinhaC);
 
+    $totalAnual = $totalAnual + $valorTotalmes;
+    $value = $value + 1;
 }
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(160, 7, 'Receita Anual ' .date('Y'), $border, 0, $alinhaC);    
+    $pdf->SetFont($fonte, $estilo, 13);
+    $pdf->Cell(30, 7, 'R$ '.$totalAnual, $border, 1, $alinhaC);
 //FECHANDO O ARQUIVO
 $pdf->Output($arquivo, $tipo_pdf);

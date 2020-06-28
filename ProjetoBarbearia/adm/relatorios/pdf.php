@@ -67,6 +67,13 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         <p class="mb-1">Relatório Anual de Quantidade de Atendimentos e Lucro por Barbeiro.</p>
         <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
       </a>
+      <a href="relatorioClientesFieis.php" target="_blank" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Relatório Clientes Fiéis</h5>
+          <!-- <small class="text-muted"><?php echo strftime('%Y', strtotime('today')); ?></small> -->
+        </div>
+        <p class="mb-1">Relatório Clientes fiéis.</p>        
+      </a>      
     </div>
   </div>
 </body>
