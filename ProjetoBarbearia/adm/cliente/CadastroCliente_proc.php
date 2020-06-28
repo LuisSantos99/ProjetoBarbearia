@@ -8,6 +8,8 @@ $CPF = filter_input(INPUT_POST,'CPFCliente',FILTER_DEFAULT);
 $RG = filter_input(INPUT_POST,'RGCliente',FILTER_DEFAULT);
 $telefone = filter_input(INPUT_POST,'TelFone',FILTER_DEFAULT);
 $Ativo = filter_input(INPUT_POST,'AtivoCliente',FILTER_DEFAULT);
+if ($Ativo == NULL)
+	$Ativo = 'off';
 /*esses campos vão mudar, lembre-se*/
 $sql = "INSERT INTO CLIENTES (NOME,DATANASC,CPF,RG,TELEFONE,ATIVO) VALUES (?,?,?,?,?,? ) ";        
 $rs = mysqli_prepare($banco,$sql);

@@ -17,6 +17,7 @@ $clientes = mysqli_fetch_assoc($resultado);
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../css/paginaInicial.css">
+	<script src="../../js/Funcoes.js" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
 
@@ -33,6 +34,10 @@ $clientes = mysqli_fetch_assoc($resultado);
 				<a href="../../paginaInicial.html">
 					<label> Página Inicial </label>
 				</a>
+				<label>|</label>
+				<a href="index.php">
+					<label>Clientes</label>
+				</a>				
 				<label>|</label>
 				<label>Editar</label>
 			</div>
@@ -51,7 +56,7 @@ $clientes = mysqli_fetch_assoc($resultado);
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="inputTelFone">Telefone</label>
-					<input value="<?= $clientes['TELEFONE'] ?>" oninput="mascaraCel(this)" type="text" class="form-control" id="TelFone" name="TelFone" maxlength="10" placeholder="Ex.: 00000-0000">
+					<input value="<?= $clientes['TELEFONE'] ?>" oninput="mascaraCel(this)" type="text" class="form-control" id="TelFone" name="TelFone" maxlength="19" placeholder="Ex.: 00000-0000">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="inputCPF">CPF</label>
@@ -64,12 +69,12 @@ $clientes = mysqli_fetch_assoc($resultado);
 			</div>
 			<div class="form-group">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="AtivoCliente" checked="<?= $clientes['Ativo'] ?>" sname="AtivoCliente">
+					<input class="form-check-input" type="checkbox" id="AtivoCliente" checked="<?= $clientes['Ativo'] ?>" name="AtivoCliente">
 					<label class="form-check-label" for="gridCheck">
 						Cliente Ativo
 					</label>
 				</div>
-			</div>
+			</div> 			
 			<div class="form-group">
 				<input type="hidden" name="idcliente" id="IDCLIENTE" value="<?= $clientes['IDCLIENTE'] ?>" class="form-control" aria-describedby="ID" placeholder="ID">
 

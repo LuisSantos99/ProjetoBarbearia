@@ -14,7 +14,7 @@ if ($pesquisa == NULL) {
             FROM CLIENTES WHERE ATIVO = 'on' ORDER BY NOME";
   else  if ($radio == 'inativo')
     $sql = "SELECT IDCLIENTE,NOME,DATE_FORMAT(DATANASC,'%d/%m/%Y') AS DATANASC,RG,CPF,TELEFONE  
-            FROM CLIENTES WHERE ATIVO = '0' ORDER BY NOME";
+            FROM CLIENTES WHERE ATIVO = 'off' ORDER BY NOME";
 
   else
     $sql = "SELECT IDCLIENTE,NOME,DATE_FORMAT(DATANASC,'%d/%m/%Y') AS DATANASC,RG,CPF,TELEFONE 
@@ -26,7 +26,7 @@ if ($pesquisa == NULL) {
             FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on' ORDER BY NOME";
   else if ($radio == 'inativo')
     $sql = "SELECT IDCLIENTE,NOME,DATE_FORMAT(DATANASC,'%d/%m/%Y') AS DATANASC,RG,CPF,TELEFONE  
-            FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = '0' ORDER BY NOME";
+            FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'off' ORDER BY NOME";
   else
     $sql = "SELECT IDCLIENTE,NOME,DATE_FORMAT(DATANASC,'%d/%m/%Y') AS DATANASC,RG,CPF,TELEFONE 
             FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%'  ORDER BY NOME";

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="../../css/global.css">
 	<link rel="stylesheet" href="../../css/paginaInicial.css">
+	<script src="../../js/Funcoes.js" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
 <body>
