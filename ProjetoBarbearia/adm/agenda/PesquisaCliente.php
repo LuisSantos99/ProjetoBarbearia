@@ -8,23 +8,9 @@ if ($radio == NULL)
   $radio = 'ativo';
 
 if ($pesquisa == NULL) {
-
-  if ($radio == 'ativo')
-    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = 'on' ORDER BY NOME";
-  else  if ($radio == 'inativo')
-    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = '0' ORDER BY NOME";
-
-  else
-    $sql = "SELECT * FROM CLIENTES ORDER BY NOME";
-} else {
-
-  if ($radio == 'ativo')
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on' ORDER BY NOME";
-  else if ($radio == 'inativo')
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = '0' ORDER BY NOME";
-  else
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%'  ORDER BY NOME";
-
+    $sql = "SELECT * FROM CLIENTES  WHERE ATIVO = 'on' ORDER BY NOME ";
+} else {  
+    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on'  ORDER BY NOME";
 }  
 $resultado = mysqli_query($banco, $sql);
 
@@ -99,7 +85,7 @@ $resultado = mysqli_query($banco, $sql);
       <br>
       <div class="form-row">	    
         <button class="btn btn-success" id="IniciarAtend" name="IniciarAtend" type="submit">
-        <i class="fas fa-sign-in-alt"></i>Iniciar atendimento</button>
+        <i class="fas fa-sign-in-alt"></i>Iniciar Agendamento</button>
       </div>
 
       <script>

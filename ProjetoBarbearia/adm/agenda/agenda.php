@@ -59,23 +59,23 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				},
 				defaultDate: Date(),
 				navLinks: true, // pode clicar em nomes de dias / semanas para navegar pelas visualizações
-				editable: true,
+				editable: false,
 				eventLimit: true, // permitir link "mais" quando houver muitos eventos
 				selectable: true,
 				events: [
-					<?php
-					while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
+				<?php
+				while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
 					?> {
-							id: '<?php echo $row_agenda['IDAGENDA']; ?>',
-							title: '<?php echo $row_agenda['NOME']; ?>',
-							start: '<?php echo $row_agenda['DATAHORA']; ?>',
-							end: '<?php echo $row_agenda['DATAHORAFIM']; ?>',
-							color: '<?php echo $row_agenda['COR']; ?>',
-							groupId: '<?php echo $row_agenda['STATUS']; ?>',
-						},
+						id: '<?php echo $row_agenda['IDAGENDA']; ?>',
+						title: '<?php echo $row_agenda['NOME']; ?>',
+						start: '<?php echo $row_agenda['DATAHORA']; ?>',
+						end: '<?php echo $row_agenda['DATAHORAFIM']; ?>',
+						color: '<?php echo $row_agenda['COR']; ?>',
+						groupId: '<?php echo $row_agenda['STATUS']; ?>',
+					},
 					<?php
-					}
-					?>
+				}
+				?>
 				],
 				eventClick: function(info) {
 					if (info.groupId == 'A') {
@@ -113,21 +113,21 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				preventContextMenuForPopup: true,
 				preventSelect: true,
 				menu: [{
-						title: "Cut",
-						cmd: "cut",
-						uiIcon: "ui-icon-scissors"
-					},
-					{
-						title: "Copy",
-						cmd: "copy",
-						uiIcon: "ui-icon-copy"
-					},
-					{
-						title: "Paste",
-						cmd: "paste",
-						uiIcon: "ui-icon-clipboard",
-						disabled: true
-					},
+					title: "Cut",
+					cmd: "cut",
+					uiIcon: "ui-icon-scissors"
+				},
+				{
+					title: "Copy",
+					cmd: "copy",
+					uiIcon: "ui-icon-copy"
+				},
+				{
+					title: "Paste",
+					cmd: "paste",
+					uiIcon: "ui-icon-clipboard",
+					disabled: true
+				},
 				],
 				select: function(event, ui) {
 					// Logic for handing the selected option
@@ -148,12 +148,13 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 <body>
 	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">		
 		<button type="hidden" id="myCheck" class="btn btn-primary text-hide" data-toggle="modal" data-target=".bd-example-modal-lg">Modal grande</button>
+
 		<a href="../../paginaInicial.html">
 			<label> Página Inicial </label>
 		</a>
 		<label>|</label>
 		<label>Agenda</label>
-	
+
 		<div class="atualizar" style="margin-top: 0px; margin-left: 20px;" onClick="history.go(0)">		
 			<i class="fa fa-refresh">
 				<label class="atualizar-name"> Atualizar </label>
@@ -213,7 +214,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 								<div class="form-row">
 									<div class="form-group col-lg-6">
 										<label for="LabelCliente"> Cliente </label>
-										<input type="text" class="form-control" id="nomeClienteA" name="nomeClienteA" placeholder="Nome Cliente" readonly>
+										<input type="text" class="form-control" id="nomeClienteA" name="nomeClienteA" placeholder="Nome Cliente" readonly />
 									</div>
 									<input style="display: none" id="idClienteA" name="IDCLIENTE" />
 									<input style="display: none" id="idBarbeiroA" name="IDBARBEIRO" />
@@ -222,97 +223,97 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 										<label for="LabelCliente"> Barbeiro </label>
 										<input type="text" class="form-control" value="" id="BarbeiroA" name="BarbeiroA" placeholder="Barbeiro" readonly>
 									</div>
-									<div class="form-row">
-										<div class="form-group col-md-row">
-											<label for="labelstInicial"> Data e Hora Inicial do Atendimento </label><br>
-											<input type="datetime-local" class="form-control" id="dtInicial" name="dtInicial" required="">
-										</div>
-										<div class="form-group col-md-row">
-											<label for="labeldtFinal"> Data e Hora Final do Atendimento </label><br>
-											<input type="datetime-local" class="form-control" id="dtFinal" name="dtFinal" required="">
-										</div>
-										<div class="form-row" style="float:right;">
-											<div class="form-group">
-												<button type="reset" class="btn btn-danger">Cancelar</button>
-											</div>
-											<div class="form-group" style="margin-left:5px;">
-												<button type="submit" class="btn btn-success" id="btEditar">Editar Agenda</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						<input type="radio" name="tabs" class="tabs" id="tab2">
-						<label for="tab2"> Finalizar Atendimento </label>
-						<div>
-							<form method='post' action='../Atendimento/InserirAtend_proc.php' enctype='multipart/form-data'>
+								</div>	
 								<div class="form-row">
 									<div class="form-group col-lg-6">
-										<label for="LabelCliente"> Cliente </label>
-										<input type="text" class="form-control" id="nomeClienteAT" name="nomeClienteAT" placeholder="Nome Cliente" readonly>
+										<label for="labelstInicial"> Data e Hora Inicial do Atendimento </label><br>
+										<input type="datetime-local" class="form-control" id="dtInicial" name="dtInicial" required="">
 									</div>
-									<input style="display: none" id="idClienteAT" name="IDCLIENTE" />
-									<input style="display: none" id="idBarbeiroAT" name="IDBARBEIRO" />
-									<input style="display: none" id="idAgendaAT" name="IDAGENDA" />
 									<div class="form-group col-lg-6">
-										<label for="LabelCliente"> Barbeiro </label>
-										<input type="text" class="form-control" value="" id="BarbeiroAT" name="BarbeiroAT" placeholder="Barbeiro" readonly>
+										<label for="labeldtFinal"> Data e Hora Final do Atendimento </label><br>
+										<input type="datetime-local" class="form-control" id="dtFinal" name="dtFinal" required="">
 									</div>
-								</div>
+								</div>	
 								<div class="form-row">
-									<div class="form-group col-md-6">
-										<label for="TipoCorte">Serviço <strong style="color:red;"> * </strong> </label>
-										<select id="TipoCorte" name="TipoCorte" class="form-control">
-											<option value="Selecione" selected>Escolher...</option>
-											<option value="Corte Infantil">Corte Infantil</option>
-											<option value="Corte Adulto">Corte Adulto</option>
-										</select>
-									</div>
-									<div class="form-group col-md-6">
-										<label for="LabelCliente"> Valor (R$) <strong style="color:red;"> * </strong> </label>
-										<input type="text" class="form-control" id="valor" name="valor" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" />
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-group col-md-6" style="float:right;">
-										<input type="text" id="valorTotal" name="valorTotal" class="form-control" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" readonly="true" />
-									</div>
-
-									<div class="form-group col-md-6" id="btAdicionar" style="float:right;">
-										<div class="service">
-											<i class="fas fa-plus service-icon" id="btAdicionar"></i>
-										</div>
-									</div>
-								</div>
-								<table id="tabelaServico" border="1" class="table">
-									<thead>
-										<tr>
-											<th>Serviço</th>
-											<th>Valor (R$)</th>
-											<th scope="col">Ação</th>
-										</tr>
-									</thead>
-								</table>
-								<div class="form-row">
-									<input type="hidden" id="itens" name="itens" />
-									<input type="hidden" id="valorx" name="valorx" />
-								</div>
-								<div class="form-row" style="float:right;">
-									<div class="form-group">
-										<button type="reset" class="btn btn-danger">Cancelar</button>
+									<div class="form-group">										
+										<button type="button" class="btn btn-danger" data-dismiss="modal">&times;Cancelar</button>
 									</div>
 									<div class="form-group" style="margin-left:5px;">
-										<button type="submit" class="btn btn-success" id="btConfirmar">Finalizar Atendimento</button>
+										<button type="submit" class="btn btn-success" id="btEditar">Editar Agenda</button>
+									</div>
+								</div>	
+						</form>
+					</div>
+					<input type="radio" name="tabs" class="tabs" id="tab2">
+					<label for="tab2"> Finalizar Atendimento </label>
+					<div>
+						<form method='post' action='../Atendimento/InserirAtend_proc.php' enctype='multipart/form-data'>
+							<div class="form-row">
+								<div class="form-group col-lg-6">
+									<label for="LabelCliente"> Cliente </label>
+									<input type="text" class="form-control" id="nomeClienteAT" name="nomeClienteAT" placeholder="Nome Cliente" readonly>
+								</div>
+								<input style="display: none" id="idClienteAT" name="IDCLIENTE" />
+								<input style="display: none" id="idBarbeiroAT" name="IDBARBEIRO" />
+								<input style="display: none" id="idAgendaAT" name="IDAGENDA" />
+								<div class="form-group col-lg-6">
+									<label for="LabelCliente"> Barbeiro </label>
+									<input type="text" class="form-control" value="" id="BarbeiroAT" name="BarbeiroAT" placeholder="Barbeiro" readonly>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-8">
+									<label for="TipoCorte">Serviço <strong style="color:red;"> * </strong> </label>
+									<select id="TipoCorte" name="TipoCorte" class="form-control">
+										<option value="Selecione" selected>Escolher...</option>
+										<option value="Corte Infantil">Corte Infantil</option>
+										<option value="Corte Adulto">Corte Adulto</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="LabelCliente"> Valor (R$) <strong style="color:red;"> * </strong> </label>
+									<input type="text" class="form-control" id="valor" name="valor" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" />
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6" style="float:right;">
+									<input type="text" id="valorTotal" name="valorTotal" class="form-control" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" readonly="true" />
+								</div>
+
+								<div class="form-group col-md-6" id="btAdicionar" style="float:right;">
+									<div class="service">
+										<i class="fas fa-plus service-icon" id="btAdicionar"></i>
 									</div>
 								</div>
-							</form>
-						</div>
+							</div>
+							<table id="tabelaServico" border="1" class="table">
+								<thead>
+									<tr>
+										<th>Serviço</th>
+										<th>Valor (R$)</th>
+										<th scope="col">Ação</th>										
+									</tr>
+								</thead>
+							</table>
+							<div class="form-row">
+								<input type="hidden" id="itens" name="itens" />
+								<input type="hidden" id="valorx" name="valorx" />
+							</div>
+							<div class="form-row" style="float:right;">
+								<div class="form-group">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">&times;Cancelar</button>
+								</div>
+								<div class="form-group" style="margin-left:5px;">
+									<button type="submit" class="btn btn-success" id="btConfirmar">Finalizar Atendimento</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
