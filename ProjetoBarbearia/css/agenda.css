@@ -31,7 +31,7 @@ body {
     margin: 0;
     flex-direction: row;
     justify-content: space-between;
-	width: 100%;
+	  width: 100%;
 	/*height: 80px;*/
     align-items: center;
     font-family: venner;
@@ -60,7 +60,7 @@ body {
 }
 
 form{
-    width: 30%;
+    /*width: 30%;*/
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -165,18 +165,17 @@ form input{
     font-size: 16px;
   }*/
 
-  p{
-    padding: 0 10px;
-  }
+  
 
   .modal .modal-dialog { 
-    width: 60%;
+    width: 100%;
     height: 1200px; 
 } 
+
   .tabs-container {
     position: relative;
-    height: 560px;
-    max-width: 98%;
+    height: 1200px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -197,13 +196,15 @@ form input{
 
   input.tabs {
     display: none;
+    margin: 0;
+    padding: 0;
   }
 
   input.tabs + label {
     line-height: 40px;
     padding: 0 20px;
     float: left;
-    background: #444;
+    background: #1E90FF;
     color: #fff;
     cursor: pointer;
     transition: background ease-in-out .3s;
@@ -221,7 +222,7 @@ form input{
     background: #eee;
     top: 40px;
     left: 0;
-    height: 300px;
+    height: 95%;
     padding: 10px;
     z-index: -1;
     transition: opacity ease-in-out .3s;
