@@ -9,7 +9,6 @@ LEFT JOIN CLIENTES C ON C.IDCLIENTE = A.IDCLIENTE
 INNER JOIN ATENDIMENTO ATN ON ATN.IDAGENDA = A.IDAGENDA";
 $resultado_agenda = mysqli_query($banco, $sql);
 
-//pesquisa('<script> document.write(variavel)</script>');
 
 $xIDAgenda =  (filter_input(INPUT_GET, 'IDAGENDA', FILTER_DEFAULT));
 /************* DADOS DA AGENDA *************/
@@ -22,13 +21,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 	WHERE A.IDAGENDA = $xIDAgenda";
 	$resultado = mysqli_query($banco, $SQL);
 	$agenda = mysqli_fetch_assoc($resultado);
-	$xidcliente = $agenda['IDCLIENTE'];
-	/************* SELECT NO ID CLIENTE, NOME *******************/
-	//$xidcliente = filter_input(INPUT_POST, 'idCliente', FILTER_DEFAULT);
-	//$sql = "SELECT IDCLIENTE, NOME FROM CLIENTES WHERE IDCLIENTE = $xidcliente";
-	//$resultado = mysqli_query($banco, $sql);
-	//$cliente = mysqli_fetch_assoc($resultado);
-	//$_GET['IDAGENDA'] = 0;
+	$xidcliente = $agenda['IDCLIENTE'];	
 }
 ?>
 <!DOCTYPE html>
@@ -66,10 +59,11 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				},
 				defaultDate: Date(),
 				navLinks: true, // pode clicar em nomes de dias / semanas para navegar pelas visualizações
-				editable: true,
+				editable: false,
 				eventLimit: true, // permitir link "mais" quando houver muitos eventos
 				selectable: true,
 				events: [
+<<<<<<< HEAD
 <<<<<<< HEAD
 					<?php
 					while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
@@ -98,12 +92,30 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 						}
 >>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 					?>
+=======
+				<?php
+				while ($row_agenda = mysqli_fetch_array($resultado_agenda)) {
+					?> {
+						id: '<?php echo $row_agenda['IDAGENDA']; ?>',
+						title: '<?php echo $row_agenda['NOME']; ?>',
+						start: '<?php echo $row_agenda['DATAHORA']; ?>',
+						end: '<?php echo $row_agenda['DATAHORAFIM']; ?>',
+						color: '<?php echo $row_agenda['COR']; ?>',
+						groupId: '<?php echo $row_agenda['STATUS']; ?>',
+					},
+					<?php
+				}
+				?>
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 				],
 				eventClick: function(info) {
 					if (info.groupId == 'A') {
 						document.getElementById("myCheck").click();
 						let info_id = info.id;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 						$.ajax({
 							url: `pesquisaAgenda.php?id=${info_id}`,
 							type: 'get'
@@ -115,8 +127,13 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 								$('#idClienteA').val(agenda.cliente.IDCLIENTE)
 								$('#BarbeiroA').val(agenda.barbeiro.NOME)
 								$('#idBarbeiroA').val(agenda.barbeiro.IDBARBEIRO)
+<<<<<<< HEAD
 								$('#dtInicial').val(agenda.barbeiro.DATAHORA)
 								$('#dtFinal').val(agenda.barbeiro.DATAHORAFIM)
+=======
+								$('#dtInicial').val(agenda.DATAHORA)
+								$('#dtFinal').val(agenda.DATAHORAFIM)
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 								$('#idAgendaA').val(agenda.IDAGENDA)
 								//ATENDIMENTO								
 								$('#nomeClienteAT').val(agenda.cliente.NOME)
@@ -130,6 +147,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 						})
 					}
 				},
+<<<<<<< HEAD
 =======
 						//document.getElementById("IDAGENDA").value = info.id;
 						//AQUI EU PASSO O ID, TAVA FAZENDO O SELECT EM PHP AQUI TAMBÉM
@@ -162,12 +180,15 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				// 	cell[0].className = originalClass + ' hasmenu';
 				// }
 >>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
+=======
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 			})
 			$(document).contextmenu({
 				delegate: ".hasmenu",
 				preventContextMenuForPopup: true,
 				preventSelect: true,
 				menu: [{
+<<<<<<< HEAD
 						title: "Cut",
 						cmd: "cut",
 						uiIcon: "ui-icon-scissors"
@@ -183,6 +204,23 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 						uiIcon: "ui-icon-clipboard",
 						disabled: true
 					},
+=======
+					title: "Cut",
+					cmd: "cut",
+					uiIcon: "ui-icon-scissors"
+				},
+				{
+					title: "Copy",
+					cmd: "copy",
+					uiIcon: "ui-icon-copy"
+				},
+				{
+					title: "Paste",
+					cmd: "paste",
+					uiIcon: "ui-icon-clipboard",
+					disabled: true
+				},
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 				],
 				select: function(event, ui) {
 					// Logic for handing the selected option
@@ -202,14 +240,24 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">		
 		<button type="hidden" id="myCheck" class="btn btn-primary text-hide" data-toggle="modal" data-target=".bd-example-modal-lg">Modal grande</button>
+=======
+	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">		
+		<button type="hidden" id="myCheck" class="btn btn-primary text-hide" data-toggle="modal" data-target=".bd-example-modal-lg">Modal grande</button>
+
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 		<a href="../../paginaInicial.html">
 			<label> Página Inicial </label>
 		</a>
 		<label>|</label>
 		<label>Agenda</label>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 		<div class="atualizar" style="margin-top: 0px; margin-left: 20px;" onClick="history.go(0)">		
 			<i class="fa fa-refresh">
 				<label class="atualizar-name"> Atualizar </label>
@@ -221,6 +269,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 				<i class="fas fa-calendar-alt service-icon">
 					<label class="agendar-name"> Agendar </label>
 				</i>
+<<<<<<< HEAD
 =======
 	<div id="menuLateral" style="width: 20%;height: 100%; float: left; padding: 3px; ">
 		<!-- <input type="button" value="Voltar" onClick="history.go(-1)"> 
@@ -230,6 +279,8 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 			<a href="../../paginaInicial.html">
 				<label> Página Inicial </label>
 >>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
+=======
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 			</a>
 		</div>
 		<!-- MENU LATERAL -->
@@ -254,6 +305,9 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 			</div>
 		</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 
 	</div>
 	<div id="conteudo" style="width: 80%; float: right; ">
@@ -279,7 +333,11 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 								<div class="form-row">
 									<div class="form-group col-lg-6">
 										<label for="LabelCliente"> Cliente </label>
+<<<<<<< HEAD
 										<input type="text" class="form-control" id="nomeClienteA" name="nomeClienteA" placeholder="Nome Cliente" readonly>
+=======
+										<input type="text" class="form-control" id="nomeClienteA" name="nomeClienteA" placeholder="Nome Cliente" readonly />
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 									</div>
 									<input style="display: none" id="idClienteA" name="IDCLIENTE" />
 									<input style="display: none" id="idBarbeiroA" name="IDBARBEIRO" />
@@ -288,6 +346,7 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 										<label for="LabelCliente"> Barbeiro </label>
 										<input type="text" class="form-control" value="" id="BarbeiroA" name="BarbeiroA" placeholder="Barbeiro" readonly>
 									</div>
+<<<<<<< HEAD
 									<div class="form-row">
 										<div class="form-group col-md-row">
 											<label for="labelstInicial"> Data e Hora Inicial do Atendimento </label><br>
@@ -300,49 +359,66 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 					<div class="modal-header">
 						<!-- <h4 class="modal-title">Título do modal</h4> -->
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
+=======
+								</div>	
+								<div class="form-row">
+									<div class="form-group col-lg-6">
+										<label for="labelstInicial"> Data e Hora Inicial do Atendimento </label><br>
+										<input type="datetime-local" class="form-control" id="dtInicial" name="dtInicial" required="">
+									</div>
+									<div class="form-group col-lg-6">
+										<label for="labeldtFinal"> Data e Hora Final do Atendimento </label><br>
+										<input type="datetime-local" class="form-control" id="dtFinal" name="dtFinal" required="">
+									</div>
+								</div>	
+								<div class="form-row">
+									<div class="form-group">										
+										<button type="button" class="btn btn-danger" data-dismiss="modal">&times;Cancelar</button>
+									</div>
+									<div class="form-group" style="margin-left:5px;">
+										<button type="submit" class="btn btn-success" id="btEditar">Editar Agenda</button>
+									</div>
+								</div>	
+						</form>
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 					</div>
-					<!-- Corpo do modal -->
-					<div class="modal-body">
-						<div class="tabs-container">
-							<input type="radio" name="tabs" class="tabs" id="tab1" checked>
-							<label for="tab1"> Editar Agenda </label>
-							<div>
-								<p>In hac habitasse platea dictumst. In laoreet justo quis magna porta, a tristique ligula maximus. Sed dignissim, tellus eu lobortis aliquet, lacus felis semper ipsum, eu vulputate sapien velit in augue. Fusce pharetra elit ut tristique congue. Praesent arcu diam, convallis a purus vitae, tempor volutpat est. Sed quis nulla odio. Cras turpis lectus, convallis non nibh at, venenatis efficitur risus. Praesent sed pharetra quam. Morbi sagittis ex eget dolor faucibus, vel vulputate velit molestie. Etiam laoreet malesuada consectetur. Ut quis iaculis diam, ullamcorper malesuada metus. Mauris euismod purus et odio egestas aliquam. Fusce mattis est sit amet leo luctus hendrerit. Pellentesque eleifend laoreet magna, ac fermentum felis condimentum et. Sed sem nisl, aliquet at sem at, ornare vehicula urna. </p>
+					<input type="radio" name="tabs" class="tabs" id="tab2">
+					<label for="tab2"> Finalizar Atendimento </label>
+					<div>
+						<form method='post' action='../Atendimento/InserirAtend_proc.php' enctype='multipart/form-data'>
+							<div class="form-row">
+								<div class="form-group col-lg-6">
+									<label for="LabelCliente"> Cliente </label>
+									<input type="text" class="form-control" id="nomeClienteAT" name="nomeClienteAT" placeholder="Nome Cliente" readonly>
+								</div>
+								<input style="display: none" id="idClienteAT" name="IDCLIENTE" />
+								<input style="display: none" id="idBarbeiroAT" name="IDBARBEIRO" />
+								<input style="display: none" id="idAgendaAT" name="IDAGENDA" />
+								<div class="form-group col-lg-6">
+									<label for="LabelCliente"> Barbeiro </label>
+									<input type="text" class="form-control" value="" id="BarbeiroAT" name="BarbeiroAT" placeholder="Barbeiro" readonly>
+								</div>
 							</div>
-							<input type="radio" name="tabs" class="tabs" id="tab2">
-							<label for="tab2"> Finalizar Atendimento </label>
-							<div>
-								<p>
-									<form method='post' action='InserirAtend_proc.php' method="post" enctype='multipart/form-data'>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="LabelCliente"> Cliente </label>
-												<input type="text" class="form-control" value="" id="nomeCliente" name="nomeCliente" placeholder="Nome Cliente" disabled>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="LabelCliente"> Barbeiro </label>
-												<input type="text" class="form-control" value="" id="Barbeiro" name="Barbeiro" placeholder="Barbeiro" disabled>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="TipoCorte">Serviço <strong style="color:red;"> * </strong> </label>
-												<select id="TipoCorte" name="TipoCorte" class="form-control">
-													<option value="Selecione" selected>Escolher...</option>
-													<option value="Corte Infantil">Corte Infantil</option>
-													<option value="Corte Adulto">Corte Adulto</option>
-												</select>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="LabelCliente"> Valor (R$) <strong style="color:red;"> * </strong> </label>
-												<input type="text" class="form-control" id="valor" name="valor" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" />
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-6" style="float:right;">
-												<input type="text" id="valorTotal" name="valorTotal" class="form-control" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" readonly="true" />
-											</div>
+							<div class="form-row">
+								<div class="form-group col-md-8">
+									<label for="TipoCorte">Serviço <strong style="color:red;"> * </strong> </label>
+									<select id="TipoCorte" name="TipoCorte" class="form-control">
+										<option value="Selecione" selected>Escolher...</option>
+										<option value="Corte Infantil">Corte Infantil</option>
+										<option value="Corte Adulto">Corte Adulto</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="LabelCliente"> Valor (R$) <strong style="color:red;"> * </strong> </label>
+									<input type="text" class="form-control" id="valor" name="valor" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" />
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6" style="float:right;">
+									<input type="text" id="valorTotal" name="valorTotal" class="form-control" onkeydown="FormataMoeda(this,10,event)" onkeypress="return maskKeyPress(event)" placeholder="R$" readonly="true" />
+								</div>
 
+<<<<<<< HEAD
 											<div class="form-group col-md-6" id="btAdicionar" style="float:right;">
 												<div class="service">       
 													<i class="fas fa-plus service-icon" id="btAdicionar"></i>                 
@@ -437,11 +513,45 @@ if (($xIDAgenda != NULL) and empty($xIDAgenda)) {
 							</div>
 >>>>>>> 519ac773f5c3b3e2ac11bcb31a7aa6c16ecda035
 						</div>
+=======
+								<div class="form-group col-md-6" id="btAdicionar" style="float:right;">
+									<div class="service">
+										<i class="fas fa-plus service-icon" id="btAdicionar"></i>
+									</div>
+								</div>
+							</div>
+							<table id="tabelaServico" border="1" class="table">
+								<thead>
+									<tr>
+										<th>Serviço</th>
+										<th>Valor (R$)</th>
+										<th scope="col">Ação</th>										
+									</tr>
+								</thead>
+							</table>
+							<div class="form-row">
+								<input type="hidden" id="itens" name="itens" />
+								<input type="hidden" id="valorx" name="valorx" />
+							</div>
+							<div class="form-row" style="float:right;">
+								<div class="form-group">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">&times;Cancelar</button>
+								</div>
+								<div class="form-group" style="margin-left:5px;">
+									<button type="submit" class="btn btn-success" id="btConfirmar">Finalizar Atendimento</button>
+								</div>
+							</div>
+						</form>
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 1d8438b46aca26e1c696a7b97dc61160337b8659
 </body>
 <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
