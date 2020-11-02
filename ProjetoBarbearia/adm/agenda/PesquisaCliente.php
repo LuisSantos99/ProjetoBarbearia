@@ -8,23 +8,9 @@ if ($radio == NULL)
   $radio = 'ativo';
 
 if ($pesquisa == NULL) {
-
-  if ($radio == 'ativo')
-    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = 'on' ORDER BY NOME";
-  else  if ($radio == 'inativo')
-    $sql = "SELECT * FROM CLIENTES WHERE ATIVO = '0' ORDER BY NOME";
-
-  else
-    $sql = "SELECT * FROM CLIENTES ORDER BY NOME";
-} else {
-
-  if ($radio == 'ativo')
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on' ORDER BY NOME";
-  else if ($radio == 'inativo')
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = '0' ORDER BY NOME";
-  else
-    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%'  ORDER BY NOME";
-
+    $sql = "SELECT * FROM CLIENTES  WHERE ATIVO = 'on' ORDER BY NOME ";
+} else {  
+    $sql = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" . $pesquisa . "%' AND ATIVO = 'on'  ORDER BY NOME";
 }  
 $resultado = mysqli_query($banco, $sql);
 
@@ -47,12 +33,18 @@ $resultado = mysqli_query($banco, $sql);
   <meta name="author" content="BarbeariaMustache!">
   <link href="../../css/bootstrap.min.css" rel="stylesheet">
   <link href="../../css/PesquisaCliente.css" rel="stylesheet">
+  <link href="../../css/global.css" rel="stylesheet">
   <script src='../../js/Funcoes.js'></script>
   <script src="https://kit.fontawesome.com/3b5310efad.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div class="container">
+<header class="topo">
+        <img src="../../img/logo.png" alt="Logo do site">
+		<h1>Pesquisar cliente<h1>
+	<!-- <a class="botao" href="logout.php">Sair (X)</a>		 -->
+    </header>
+<div class="container">
     <br>
     <form name="frmBusca" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>?a=buscar">
       <div class="form-row">        
@@ -99,7 +91,7 @@ $resultado = mysqli_query($banco, $sql);
       <br>
       <div class="form-row">	    
         <button class="btn btn-success" id="IniciarAtend" name="IniciarAtend" type="submit">
-        <i class="fas fa-sign-in-alt"></i>Iniciar atendimento</button>
+        <i class="fas fa-sign-in-alt"></i>Iniciar Agendamento</button>
       </div>
 
       <script>
